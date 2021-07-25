@@ -30,7 +30,7 @@
               <%= link_to " Users", new_user_registration_path, class:"nav-link text-light fas fa-users"; %>
             </li>
             <li class="nav-item">
-              <%= link_to " Books", new_user_registration_path, class:"nav-link text-light fas fa-book-open"; %>
+              <%= link_to " Books", books_path, class:"nav-link text-light fas fa-book-open"; %>
             </li>
             <li class="nav-item">
               <%= link_to " logout", destroy_user_session_path, method: :delete, class:"nav-link text-light fas fa-sign-out-alt"; %>
@@ -40,7 +40,7 @@
               <%= link_to " Home", new_user_registration_path, class:'nav-link text-light fas fa-home'; %>
             </li>
             <li class="nav-item">
-              <%= link_to " About", new_user_registration_path, class:'nav-link text-light fas fa-home'; %>
+              <%= link_to " About", home_about_path, class:'nav-link text-light fas fa-home'; %>
             </li>
             <li class="nav-item">
               <%= link_to " sign up", new_user_registration_path, class:'nav-link text-light fas fa-user-plus'; %>
