@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h2>User info</h2>
+      <%= attachment_image_tag @show.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+      <table class="table">
+        <tbody>
+          <tr></tr>
+          <tr>
+            <th>name</th>
+            <th><%= @show.user.name %></th>
+          </tr>
+          <tr>
+            <th>introduction</th>
+            <th><%= @show.user.introduction %></th>
+          </tr>
+        </tbody>
+      </table>
+      <div class="row">
+        <%= link_to "", edit_user_path(@show.user.id), class:'btn btn-outline-secondary btn-block fas fa-user-cog'; %>
+      </div>
+      <h2 class="mt-3">New book</h2>
+      <%= form_with model: @book, local:true do |f| %>
+        <div class="form-group">
+          <%= f.label :title, "Title" %>
+          <%= f.text_field :title, class:'form-control book_title'; %>
+        </div>
+        <div class="form-group">
+          <%= f.label :body, "Opinion" %>
+          <%= f.text_area :body, class:'form-control book_body'; %>
+        </div>
+        <div class="form-group">
+          <%= f.submit 'Create Book', class:'btn btn-success'; %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <%= attachment_image_tag @show.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40' %><br>
+              <%= link_to @show.user.name, user_path(@show.user.id) %>
+            </td>
+            <td><%= link_to @show.title, book_path(@show) %></td>
+            <td><%= @show.body %></td>
+            <% if @show.user == current_user %>
+              <td><%= link_to "Edit", edit_book_path(@show), class:'btn btn-sm btn-success'; %></td>
+              <td><%= link_to "Destroy", book_path(@show), method: :delete, class:'btn btn-sm btn-danger'; %></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

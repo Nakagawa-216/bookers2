@@ -24,10 +24,10 @@
             <ul class="navbar-nav ml-auto text-light">
             <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to " Home", new_user_registration_path, class:"nav-link text-light fas fa-home"; %>
+              <%= link_to " Home", user_path(current_user), class:"nav-link text-light fas fa-home"; %>
             </li>
             <li class="nav-item">
-              <%= link_to " Users", new_user_registration_path, class:"nav-link text-light fas fa-users"; %>
+              <%= link_to " Users", users_path, class:"nav-link text-light fas fa-users"; %>
             </li>
             <li class="nav-item">
               <%= link_to " Books", books_path, class:"nav-link text-light fas fa-book-open"; %>
@@ -37,10 +37,10 @@
             </li>
             <% else %>
             <li class="nav-item">
-              <%= link_to " Home", new_user_registration_path, class:'nav-link text-light fas fa-home'; %>
+              <%= link_to " Home", root_path, class:'nav-link text-light fas fa-home'; %>
             </li>
             <li class="nav-item">
-              <%= link_to " About", home_about_path, class:'nav-link text-light fas fa-home'; %>
+              <%= link_to " About", home_about_path, class:'nav-link text-light fas fa-link'; %>
             </li>
             <li class="nav-item">
               <%= link_to " sign up", new_user_registration_path, class:'nav-link text-light fas fa-user-plus'; %>
@@ -54,6 +54,23 @@
         </div>
       </nav>
     </header>
+    
+    <% if flash[:success] %>
+      <p id="success">
+        <%= flash[:success] %>
+      </p>
+    <% end %>
+    <% if flash[:notice] %>
+      <p id="notice">
+        <%= flash[:notice] %>
+      </p>
+    <% end %>
+    <% if flash[:alert] %>
+      <p id="alert">
+        <%= flash[:alert] %>
+      </p>
+    <% end %>
+
     <main class="mb-auto">
     <%= yield %>
     </main>
